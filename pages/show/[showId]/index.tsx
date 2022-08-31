@@ -42,11 +42,12 @@ const ShowPage = (props: { showId: number; }) => {
     else if (show) {
         return <SingleShowPageLayout show={show} />
     }
+    else return <ErrorAlert />
+
 }
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const showId = context.params?.showId;
     if (!showId) {
-        // TODO Redirect the user to a 404 page.
         return {
             redirect: {
                 destination: '/404',
