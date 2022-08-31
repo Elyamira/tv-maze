@@ -13,13 +13,7 @@ import RatingConverter from "../../../domain/services/rating-converter/RatingCon
 const SingleShowPageLayout = (props: { show: Show }) => {
 
     const { show } = props;
-    let ratingInFiveStars;
-    let roundedRating;
-    // if (show.rating.average) {
-    //     ratingInFiveStars = show.rating.average / 10 * 5;
-    //     roundedRating = Math.round((ratingInFiveStars + Number.EPSILON) * 100) / 100;
-    // }
-    const [rating] = useState(RatingConverter.getStarsWithDecimals(show.rating.average));
+    const [rating] = useState(RatingConverter.getStarsWithDecimals(show?.rating?.average));
     const [currentPage, setCurrentPage] = useState(1);
     // No of Items to be displayed on each page
     const [itemsPerPage] = useState(4);
@@ -76,7 +70,7 @@ const SingleShowPageLayout = (props: { show: Show }) => {
                 <h3 className="bottom-part-header">Show info</h3>
                 <div className="show-info">
                     <ShowInfoItem category="Streamed on" value={show?.network?.name ? show?.network?.name : ""} withLightBottomBorder={false} />
-                    <ShowInfoItem category="Schedule" value={show?.schedule.days ? show?.schedule.days : ""} withLightBottomBorder={true} />
+                    <ShowInfoItem category="Schedule" value={show?.schedule?.days ? show?.schedule?.days : ""} withLightBottomBorder={true} />
                     <ShowInfoItem category="Status" value={show?.status ? show?.status : ""} withLightBottomBorder={false} />
                     <ShowInfoItem category="Genres" value={show?.genres ? show?.genres : []} withLightBottomBorder={true} />
                 </div>
