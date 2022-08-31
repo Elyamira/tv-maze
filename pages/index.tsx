@@ -29,6 +29,9 @@ const Home: NextPage = () => {
     }
   })
 
+  // calls  location api to get user's location info 
+  // to pass to Maze api and show programm for user's country
+
   const getUserCountryCode = async () => {
     try {
       setLoading(true);
