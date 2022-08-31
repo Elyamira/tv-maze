@@ -24,7 +24,9 @@ const Pagination = (props: { nPages: number, currentPage: number, setCurrentPage
                         data-testid={`page-item-${pgNumber}`}
                         className={`page-item-${pgNumber} ${currentPage == pgNumber ? 'active' : ''} `} >
                         <p onClick={() => setCurrentPage(pgNumber)}
-                            className={`page-link ${currentPage == pgNumber ? 'active' : ''}`}>
+                            className={`page-link ${currentPage == pgNumber ? 'active' : ''}`}
+                            data-testid={`page-link-${pgNumber}`}
+                        >
                             {pgNumber}
                         </p>
                     </li>

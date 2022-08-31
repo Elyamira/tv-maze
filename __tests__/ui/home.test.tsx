@@ -1,4 +1,5 @@
-import { fireEvent, render, screen, waitForElementToBeRemoved } from "@testing-library/react";
+import '@testing-library/jest-dom';
+import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
 import Home from '../ui/../../pages/index';
 
 test("page has initial loader", async () => {
@@ -7,6 +8,7 @@ test("page has initial loader", async () => {
   expect(loader).toBeDefined();
   await waitForElementToBeRemoved(() => screen.getByTestId('Loader'));
 })
+
 test("page has correct heading", async () => {
   render(<Home />);
   await waitForElementToBeRemoved(() => screen.getByTestId('Loader'));
@@ -15,6 +17,7 @@ test("page has correct heading", async () => {
   });
   expect(heading).toBeDefined();
 })
+
 test("page renders cards with tv shows", async () => {
   render(<Home />);
   await waitForElementToBeRemoved(() => screen.getByTestId('Loader'));
