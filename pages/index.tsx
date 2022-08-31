@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (countryCodeError) return;
     getUserCountryCode();
-  }, [])
+  }, [countryCodeError])
 
   useEffect(() => {
     if (errorWhileCatchingShows) return;
