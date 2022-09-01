@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { WrapperForContentWithoutFooter } from "../../../../styles/WrapperForContentWithoutFooter";
 import { Schedule } from "../../../domain/models/apiSchema";
 import Footer from "../../elements/footer";
 import Header from "../../elements/header";
@@ -17,20 +18,24 @@ const HomePageLayout = (props: { schedule: Schedule[]; }) => {
     const nPages = Math.ceil(schedule.length / itemsPerPage);
     return (
         <HomePageLayoutStyled>
-            <div className="background">
-            </div>
-            <div className="mobile-background">
-                <Header />
-                <p className='main-description'>
-                    TV Show and web series database. Create personalised schedules. Episode guide, cast, crew and character information.
-                </p>
-            </div>
-            <h4 className='shows-list-header'>Last added shows</h4>
-            <ScheduleShowsList schedule={currentPageItems} />
-            <Pagination
-                nPages={nPages}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage} />
+            <WrapperForContentWithoutFooter>
+                <div className="background">
+                </div>
+                <div className="mobile-background">
+                    <Header />
+                    <p className='main-description'>
+                        TV Show and web series database. Create personalised schedules. Episode guide, cast, crew and character information.
+                    </p>
+                </div>
+                <h4 className='shows-list-header'>Last added shows</h4>
+                <ScheduleShowsList schedule={currentPageItems} />
+                {schedule.length > itemsPerPage &&
+                    <Pagination
+                        nPages={nPages}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage} />
+                }
+            </WrapperForContentWithoutFooter>
             <Footer />
         </HomePageLayoutStyled>
     )

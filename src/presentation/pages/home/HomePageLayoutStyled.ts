@@ -5,6 +5,10 @@ export const HomePageLayoutStyled = styled.div`
 position: relative;
 padding-top: 3rem;
 z-index: 10;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+
 & .background {
   position: absolute;
   padding: 3rem;

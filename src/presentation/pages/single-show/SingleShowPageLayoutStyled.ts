@@ -3,6 +3,9 @@ import { ShowInfoItemStyled } from "../../elements/show-info/ShowInfoItemStyled"
 
 export const SingleShowPageLayoutStyled = styled.div`
 padding-top: 3rem;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 {
   @media (max-width: 768px) {
     padding-top: 0;
