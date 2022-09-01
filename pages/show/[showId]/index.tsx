@@ -12,7 +12,7 @@ const ShowPage = (props: { showId: number; }) => {
     const [receiveShowByIdError, setReceiveShowByIdError] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const getShowById = async () => {
+    const getShowById = async (showId: number) => {
         try {
             setLoading(true);
             const response = await fetch(`${Endpoints.tvShowInfoEndpoint}${showId}?embed=cast`);
@@ -29,15 +29,16 @@ const ShowPage = (props: { showId: number; }) => {
     }
     useEffect(() => {
         if (receiveShowByIdError) return;
-        if (!show) {
-            getShowById();
+        if (!show && !loading) {
+            getShowById(showId)
         }
-    })
+    }, [receiveShowByIdError, loading, show, showId])
+
+    if (loading) {
+        return <Loader />
+    }
     if (receiveShowByIdError) {
         return <ErrorAlert />
-    }
-    else if (loading) {
-        return <Loader />
     }
     else if (show) {
         return <SingleShowPageLayout show={show} />

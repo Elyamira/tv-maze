@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     if (countryCodeError) {
       getAllShows(Endpoints.tvScheduleEndpoint);
     }
-  })
+  }, [errorWhileCatchingShows, countryCode, countryCodeError, schedule.length])
 
   // calls  location api to get user's location info 
   // to pass to Maze api and show programm for user's country
