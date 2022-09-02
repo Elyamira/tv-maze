@@ -15,9 +15,9 @@ max-width: 285px;
     position: relative;
     width: 100%;
     height: 29.5rem;
+    background-color: #fff;
     > span > img {
         object-position: top;
-        
     }
 }
 .text-container{
