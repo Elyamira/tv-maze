@@ -10,19 +10,15 @@ import Pagination from "../../elements/pagination"
 import TVCastItemsList from "../../elements/tv-cast-items-list"
 import RatingConverter from "../../../domain/services/rating-converter/RatingConverter"
 import { WrapperForContentWithoutFooter } from "../../../../styles/utilities/WrapperForContentWithoutFooter"
+import usePagesForPagination from "../../../domain/services/usePagesForPagination"
 
 const SingleShowPageLayout = (props: { show: Show }) => {
 
     const { show } = props;
     const [rating] = useState(RatingConverter.getStarsWithDecimals(show?.rating?.average));
-    const [currentPage, setCurrentPage] = useState(1);
-    // No of Items to be displayed on each page
-    const [itemsPerPage] = useState(4);
-    const indexOfLastPageItem = currentPage * itemsPerPage;
-    const indexOfFirstPageItem = indexOfLastPageItem - itemsPerPage;
-    const [cast] = useState(show?._embedded?.cast ? [...show?._embedded?.cast] : [])
-    const currentPageItems = cast.slice(indexOfFirstPageItem, indexOfLastPageItem);
-    const nPages = Math.ceil(cast.length / itemsPerPage);
+    const [cast] = useState(show?._embedded?.cast ? [...show?._embedded?.cast] : []);
+    const itemsPerPage = 4;
+    const infoForPagination = usePagesForPagination(cast, itemsPerPage)
     return (
         <SingleShowPageLayoutStyled>
             <WrapperForContentWithoutFooter>
@@ -83,12 +79,12 @@ const SingleShowPageLayout = (props: { show: Show }) => {
 
                         <div className="starring-info">
 
-                            {currentPageItems && <TVCastItemsList fullCast={currentPageItems} />}
-                            {cast.length > itemsPerPage &&
+                            {infoForPagination.currentPageItems && <TVCastItemsList fullCast={infoForPagination.currentPageItems} />}
+                            {cast.length > infoForPagination.itemsPerPage &&
                                 <Pagination
-                                    nPages={nPages}
-                                    currentPage={currentPage}
-                                    setCurrentPage={setCurrentPage} />
+                                    nPages={infoForPagination.nPages}
+                                    currentPage={infoForPagination.currentPage}
+                                    setCurrentPage={infoForPagination.setCurrentPage} />
                             }
                         </div>
                     </div>
