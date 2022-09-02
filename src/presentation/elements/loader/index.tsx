@@ -1,11 +1,11 @@
 import { ClipLoader } from "react-spinners";
-import { LoaderStyled } from "./LoaderStyled";
+import { CenteredContentWrapper } from "../../../../styles/utilities/CenteredContentWrapper";
 
 const Loader = () => {
     return (
-        <LoaderStyled>
+        <CenteredContentWrapper>
             <ClipLoader size={50} data-testid="Loader" />
-        </LoaderStyled>
+        </CenteredContentWrapper>
     )
 }
 export default Loader;

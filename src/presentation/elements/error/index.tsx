@@ -1,10 +1,10 @@
-import { ErrorAlertStyled } from "./StyledError";
+import { CenteredContentWrapper } from "../../../../styles/utilities/CenteredContentWrapper";
 
 const ErrorAlert = () => {
     return (
-        <ErrorAlertStyled>
+        <CenteredContentWrapper>
             <p>Something went wrong, please refresh the page or try again later</p>
-        </ErrorAlertStyled>
+        </CenteredContentWrapper>
     )
 }
 export default ErrorAlert;

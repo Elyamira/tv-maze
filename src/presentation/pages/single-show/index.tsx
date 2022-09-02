@@ -9,7 +9,7 @@ import Footer from "../../elements/footer"
 import Pagination from "../../elements/pagination"
 import TVCastItemsList from "../../elements/tv-cast-items-list"
 import RatingConverter from "../../../domain/services/rating-converter/RatingConverter"
-import { WrapperForContentWithoutFooter } from "../../../../styles/WrapperForContentWithoutFooter"
+import { WrapperForContentWithoutFooter } from "../../../../styles/utilities/WrapperForContentWithoutFooter"
 
 const SingleShowPageLayout = (props: { show: Show }) => {
 

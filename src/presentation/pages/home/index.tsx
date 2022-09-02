@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { WrapperForContentWithoutFooter } from "../../../../styles/WrapperForContentWithoutFooter";
+import { WrapperForContentWithoutFooter } from "../../../../styles/utilities/WrapperForContentWithoutFooter";
 import { Schedule } from "../../../domain/models/apiSchema";
 import Footer from "../../elements/footer";
 import Header from "../../elements/header";
