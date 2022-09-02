@@ -6,12 +6,15 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
   cursor: default;
+  height: 100%;
 }
 html {
   font-size: 62.5%;
 }
 body {
   font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
 }
 a {
   color: inherit;
