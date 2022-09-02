@@ -5,7 +5,7 @@ import Settings from "../../../config/Settings";
 import { Schedule } from "../../../domain/models/apiSchema";
 import RatingConverter from "../../../domain/services/rating-converter/RatingConverter";
 import TvBlandRouteServices from "../../../domain/services/routing/TvBlandRouteServices";
-import { ScheduleTvShowCardStyled as ScheduleTVShowCardStyled } from "./ScheduleTvShowCardStyled";
+import { ImageContainerStyled, ScheduleTvShowCardStyled as ScheduleTVShowCardStyled, TextContainerStyled } from "./ScheduleTvShowCardStyled";
 
 const ScheduleShowCard = (props: { scheduleItem: Schedule }) => {
     const { scheduleItem } = props;
@@ -17,15 +17,15 @@ const ScheduleShowCard = (props: { scheduleItem: Schedule }) => {
     }
 
     return <ScheduleTVShowCardStyled onClick={() => handleOnClickShow(scheduleItem.show.id)}>
-        <div className="image-container">
+        <ImageContainerStyled>
             <Image alt="show preview image" src={scheduleItem.show?.image?.medium
                 ? scheduleItem?.show?.image?.medium
                 : defaultImage
             }
                 layout="fill" objectFit="cover"
             />
-        </div>
-        <div className="text-container">
+        </ImageContainerStyled>
+        <TextContainerStyled>
             <div className="rating-stars-container">
                 {[...Array(Settings.maxCountStarsRating)].map((star, index) => {
                     index += 1;
@@ -46,7 +46,7 @@ const ScheduleShowCard = (props: { scheduleItem: Schedule }) => {
             </div>
             <p>{scheduleItem.show.name}</p>
             <p>{scheduleItem.name}</p>
-        </div>
+        </TextContainerStyled>
     </ScheduleTVShowCardStyled>
 }
 export default ScheduleShowCard;

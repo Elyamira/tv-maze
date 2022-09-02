@@ -1,5 +1,5 @@
 import React from 'react'
-import { PaginationStyled } from './PaginationStyled';
+import { PageItemStyled, PageLinkStyled, PaginationStyled } from './PaginationStyled';
 
 const Pagination = (props: { nPages: number, currentPage: number, setCurrentPage: (number: number) => void }) => {
     const { nPages, currentPage, setCurrentPage } = props;
@@ -13,30 +13,30 @@ const Pagination = (props: { nPages: number, currentPage: number, setCurrentPage
     return (
         <PaginationStyled>
             <ul className='pagination'>
-                <li className="page-item">
-                    <p className={`page-link ${currentPage == 1 ? 'disable' : ''}`}
+                <PageItemStyled>
+                    <PageLinkStyled className={`page-link ${currentPage == 1 ? 'disable' : ''}`}
                         onClick={prevPage}>
                         Prev
-                    </p>
-                </li>
+                    </PageLinkStyled>
+                </PageItemStyled>
                 {pageNumbers.map(pgNumber => (
-                    <li key={pgNumber}
+                    <PageItemStyled key={pgNumber}
                         data-testid={`page-item-${pgNumber}`}
                         className={`page-item-${pgNumber} ${currentPage == pgNumber ? 'active' : ''} `} >
-                        <p onClick={() => setCurrentPage(pgNumber)}
+                        <PageLinkStyled onClick={() => setCurrentPage(pgNumber)}
                             className={`page-link ${currentPage == pgNumber ? 'active' : ''}`}
                             data-testid={`page-link-${pgNumber}`}
                         >
                             {pgNumber}
-                        </p>
-                    </li>
+                        </PageLinkStyled>
+                    </PageItemStyled>
                 ))}
-                <li className="page-item">
-                    <p className={`page-link ${currentPage == nPages ? 'disable' : ''}`}
+                <PageItemStyled>
+                    <PageLinkStyled className={`page-link ${currentPage == nPages ? 'disable' : ''}`}
                         onClick={nextPage}>
                         Next
-                    </p>
-                </li>
+                    </PageLinkStyled>
+                </PageItemStyled>
             </ul>
         </PaginationStyled>
     )

@@ -8,5 +8,4 @@ background: linear-gradient(180deg, rgba(0,0,0,0.07328869047619047) 100%, rgba(0
 justify-content: center;
 align-items: center;
 flex-shrink: 0;
-
 `

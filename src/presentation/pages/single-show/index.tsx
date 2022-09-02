@@ -2,7 +2,7 @@ import sanitizeHtml from "sanitize-html"
 import { Show } from "../../../domain/models/apiSchema"
 import Header from "../../elements/header"
 import ShowInfoItem from "../../elements/show-info/ShowInfoItem"
-import { SingleShowPageLayoutStyled } from "./SingleShowPageLayoutStyled"
+import { FullInfoContainerStyled, ShowInfoContainerStyled, ShowInfoImageContainerStyled, ShowInfoStyled, ShowInfoTextContainerStyled, SingleShowPageLayoutStyled } from "./SingleShowPageLayoutStyled"
 import Image from "next/image"
 import { useState } from "react"
 import Footer from "../../elements/footer"
@@ -26,18 +26,18 @@ const SingleShowPageLayout = (props: { show: Show }) => {
                     <Header />
                     <div className="background">
                     </div>
-                    <div className="show-info-container">
+                    <ShowInfoContainerStyled>
                         {show &&
-                            <div className="show-info-image-container">
+                            <ShowInfoImageContainerStyled>
                                 <Image
                                     src={show.image?.original ? show.image?.original : "/images/default-placeholder.png"} alt="show poster" layout="fill" objectFit="cover"
                                     placeholder="blur"
                                     priority
                                     blurDataURL={show.image?.original ? show.image?.original : "/images/default-placeholder.png"}
                                 />
-                            </div>
+                            </ShowInfoImageContainerStyled>
                         }
-                        <div className="show-info-text-container">
+                        <ShowInfoTextContainerStyled>
                             <div className="raiting-container">
                                 <div className="stars">
                                     {[...Array(5)].map((star, index) => {
@@ -61,18 +61,18 @@ const SingleShowPageLayout = (props: { show: Show }) => {
                             </div>
                             <h1>{show?.name}</h1>
                             <p>{sanitizeHtml(show?.summary, { allowedTags: [] })}</p>
-                        </div>
-                    </div>
+                        </ShowInfoTextContainerStyled>
+                    </ShowInfoContainerStyled>
                 </div>
-                <div className="full-info-container">
+                <FullInfoContainerStyled>
                     <div className="show-info-with-header">
                         <h3 className="bottom-part-header">Show info</h3>
-                        <div className="show-info">
+                        <ShowInfoStyled>
                             <ShowInfoItem category="Streamed on" value={show?.network?.name ? show?.network?.name : ""} withLightBottomBorder={false} />
                             <ShowInfoItem category="Schedule" value={show?.schedule?.days ? show?.schedule?.days : ""} withLightBottomBorder={true} />
                             <ShowInfoItem category="Status" value={show?.status ? show?.status : ""} withLightBottomBorder={false} />
                             <ShowInfoItem category="Genres" value={show?.genres ? show?.genres : []} withLightBottomBorder={true} />
-                        </div>
+                        </ShowInfoStyled>
                     </div>
                     <div className="starring-info-with-header">
                         <h3 className="bottom-part-header">Starring</h3>
@@ -88,7 +88,7 @@ const SingleShowPageLayout = (props: { show: Show }) => {
                             }
                         </div>
                     </div>
-                </div>
+                </FullInfoContainerStyled>
             </WrapperForContentWithoutFooter>
             <Footer />
         </SingleShowPageLayoutStyled>

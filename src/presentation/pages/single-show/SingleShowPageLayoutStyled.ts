@@ -38,105 +38,107 @@ main {
   }
   min-height: 80vh;
 }
-.show-info-container{
-  padding: 3rem;
-  display: flex;
-  gap: 1.5rem;
-  .show-info-text-container {
-    flex: 5;
-    padding-top: 2rem;
-    
-    .raiting-container{
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    >p{ 
-      width: 80%;
-      line-height: 1.3;
-      @media (max-width: 800px) {
-        width: 85%;
-      }
-      @media (max-width: 768px) {
-        width: 100%;
-      }
-    }
-    
-    > h1 {
-      padding: 1rem 0;
-    }
-    @media (max-width:768px){
-      width: 100%;
-      flex: 1;
-    }
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
-  .show-info-image-container {
-    position: relative;
-    width: 300px;
-    height: 450px;
-    
-    @media (max-width: 768px) {
-      position: relative;
-      min-width: 100%;
-      max-width: 100%;
-      min-height: 750px;
-      object-position: bottom;
-    }
-  }
-}
+
 .bottom-part-header{
   padding: 3rem 0;
 }
-.full-info-container{
-  padding: 3rem;
-  display: flex;
-  gap: 3rem;
-  > .show-info, >.starring-info {
+`
+export const ShowInfoContainerStyled = styled.div`
+padding: 3rem;
+display: flex;
+gap: 1.5rem;
+@media (max-width: 768px) {
+  flex-direction: column;
+  align-items: center;
+}
+`
+export const ShowInfoTextContainerStyled = styled.div`
+  flex: 5;
+  padding-top: 2rem;
+  
+  .raiting-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  >p{ 
+    width: 80%;
+    line-height: 1.3;
+    @media (max-width: 800px) {
+      width: 85%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  
+  > h1 {
+    padding: 1rem 0;
+  }
+  @media (max-width:768px){
+    width: 100%;
     flex: 1;
   }
-  .starring-info {
-    @media (max-width: 924px) {
-      width: 70%;
-    }
-    @media (max-width: 768px) {
-      width: auto;
-    }
-  }
-  .show-info-with-header, .starring-info-with-header {
-    min-width: 45%;
-  }
-  .show-info {
-    @media (max-width: 924px) {
-      width: 70%;
-    }
-    @media (max-width: 768px) {
-      width: auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10%;
-      ${ShowInfoItemStyled}{
-        border-bottom: none;
-        width: 45%;
-        flex-direction: column;
-        .item-value-container {
-          display: block;
-          > p {
-            display: inline-block;
-            :not(:last-child):after {
-              content: ", ";
-              white-space: pre;
-            }
-          } 
-        }    
-      }
-    }
-  }
+`
+export const ShowInfoImageContainerStyled = styled.div`
+position: relative;
+width: 300px;
+height: 450px;
+
+@media (max-width: 768px) {
+  position: relative;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 750px;
+  object-position: bottom;
+}
+`
+export const FullInfoContainerStyled = styled.div`
+padding: 3rem;
+display: flex;
+gap: 3rem;
+> .show-info, >.starring-info {
+  flex: 1;
+}
+.starring-info {
   @media (max-width: 924px) {
-    flex-direction: column;
+    width: 70%;
+  }
+  @media (max-width: 768px) {
+    width: auto;
   }
 }
+.show-info-with-header, .starring-info-with-header {
+  min-width: 45%;
+}
+
+@media (max-width: 924px) {
+  flex-direction: column;
+}
+`
+export const ShowInfoStyled = styled.div`
+  @media (max-width: 924px) {
+    width: 70%;
+  }
+  @media (max-width: 768px) {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10%;
+    ${ShowInfoItemStyled}{
+      border-bottom: none;
+      width: 45%;
+      flex-direction: column;
+      .item-value-container {
+        display: block;
+        > p {
+          display: inline-block;
+          :not(:last-child):after {
+            content: ", ";
+            white-space: pre;
+          }
+        } 
+      }    
+    }
+  }
 `
